@@ -32,7 +32,7 @@ if needed. The key is `producer.bootstrap.servers`.
    $ ./gradlew executeProducer -Pmatch=2
 ```
 
-You can change `-Pmatch` to 1, 2, or 3. It will parse the 3 replays above according to index.
+You can change `-Pmatch` to 0, 1, or 2. It will parse the 3 replays above according to index.
 
 ## Notes
 
