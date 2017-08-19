@@ -9,7 +9,7 @@ The project is created as a complement for [JVM Meetup #5]() and [this article a
 
 Since Github has a file limit, I cannot upload the replay file directly to here. 
 To be able to run the application successfully, make sure you have 3 replay files
-in `src/main/resources/replay/*`. The files are:
+in `app-producer/src/main/resources/replay/*`. The files are:
 
 1. `3368387319_2081121450.dem` [download](http://replay111.valve.net/570/3368387319_2081121450.dem.bz2)
 1. `3372622939_490339365.dem` [download](http://replay111.valve.net/570/3372622939_490339365.dem.bz2)
@@ -23,7 +23,7 @@ Also make sure you have:
 - Java 8+
 - Apache Kafka 0.11+ 
 
-The default connection is called to `localhost:9092`, you can change it in `src/main/resources/application.properties`
+The default connection is called to `localhost:9092`, you can change it in `app-producer/src/main/resources/application.properties`
 if needed. The key is `producer.bootstrap.servers`.
 
 ## How to run

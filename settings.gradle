@@ -1,2 +1,5 @@
 rootProject.name = 'kafka-clarity'
 
+include 'app-core'
+include 'app-producer'
+
