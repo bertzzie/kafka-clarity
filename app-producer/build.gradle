@@ -9,7 +9,5 @@ task executeProducer(type:JavaExec) {
 dependencies {
     compile project(':app-core')
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.6.RELEASE'
 }
