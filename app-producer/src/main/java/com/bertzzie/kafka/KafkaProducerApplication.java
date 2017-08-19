@@ -11,6 +11,8 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import skadistats.clarity.processor.runner.SimpleRunner;
 import skadistats.clarity.source.MappedFileSource;
 import skadistats.clarity.source.Source;
@@ -32,6 +34,9 @@ public class KafkaProducerApplication implements ApplicationRunner {
     @Autowired
     private KafkaApplicationConfig kafkaApplicationConfig;
 
+    @Autowired
+    private ApplicationContext context;
+
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private final String[] replays = new String[]{
@@ -44,15 +49,19 @@ public class KafkaProducerApplication implements ApplicationRunner {
         String fileName = "";
         try {
             Integer matchNo = Integer.valueOf(match);
-            if (matchNo >= 0 && matchNo < 3) {
-                fileName = replays[matchNo];
+            if (matchNo < 0 || matchNo > 2) {
+                throw new IllegalArgumentException("--match only accept 0, 1, or 2");
             }
 
-            throw new IllegalArgumentException("--match only accept 0, 1, or 2");
+            fileName = replays[matchNo];
         } catch (NumberFormatException exception) {
             logger.error("Please input number 0, 1, or 2 in --match");
+            SpringApplication.exit(context);
+            return;
         } catch (IllegalArgumentException exception) {
             logger.error(exception.getMessage());
+            SpringApplication.exit(context);
+            return;
         }
 
         try {
@@ -71,8 +80,10 @@ public class KafkaProducerApplication implements ApplicationRunner {
             runner.runWith(kafkaProcessor);
         } catch(IOException exception) {
             logger.error("IOException thrown: Likely no file found");
+            SpringApplication.exit(context);
         } catch (NullPointerException exception) {
             logger.error("NullPointerException thrown: Likely no file found");
+            SpringApplication.exit(context);
         }
     }
 
