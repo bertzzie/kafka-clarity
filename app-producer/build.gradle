@@ -8,7 +8,6 @@ task executeProducer(type:JavaExec) {
 
 dependencies {
     compile project(':app-core')
-    compileOnly 'org.projectlombok:lombok:1.16.18'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
