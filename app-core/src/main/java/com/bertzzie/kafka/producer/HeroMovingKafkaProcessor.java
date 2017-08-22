@@ -21,7 +21,7 @@ public class HeroMovingKafkaProcessor {
     private Producer<String, HeroCoordinate> producer;
     private String gameID;
 
-    private final String HERO_MOVING_TOPIC_POSTFIX = "hero_moving";
+    private final String HERO_MOVEMENT_TOPIC = "hero_movement";
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -32,10 +32,8 @@ public class HeroMovingKafkaProcessor {
 
     @OnHeroMoving
     public void onHeroMoving(Context context, HeroCoordinate hero) {
-        String key = hero.getTick() + "_" + hero.getName();
+        logger.info("Sending data to kafka: " + hero.toString() + " with key = " + gameID);
 
-        logger.info("Sending data to kafka: " + hero.toString() + " with key = " + key);
-
-        this.producer.send(new ProducerRecord<>(gameID + "_" + HERO_MOVING_TOPIC_POSTFIX, key, hero));
+        this.producer.send(new ProducerRecord<>(HERO_MOVEMENT_TOPIC, gameID, hero));
     }
 }
