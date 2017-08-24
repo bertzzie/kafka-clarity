@@ -28,6 +28,14 @@ if needed. The key is `producer.bootstrap.servers`.
 
 ## How to run
 
+To run the consumer:
+
+```bash
+   $ ./gradlew executeConsumer
+```
+
+To run the producer:
+
 ```bash
    $ ./gradlew executeProducer -Pmatch=2
 ```
@@ -41,7 +49,7 @@ Feel free to send me feedback or PR if you think there's things that need improv
 ## Todo
 
 - [x] Demonstrate how to send data to Kafka (via Producer)
-- [ ] Demonstrate how to consume data from Kafka
+- [x] Demonstrate how to consume data from Kafka
 - [ ] Demonstrate how to use Kafka Streams to process data
 - [ ] Write blog post about this
 - [ ] Update meetup video link when available
