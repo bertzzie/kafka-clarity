@@ -1,0 +1,10 @@
+task executeConsumer(type:JavaExec) {
+    main = "com.bertzzie.kafka.KafkaConsumerApplication"
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+dependencies {
+    compile project(':app-core')
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.6.RELEASE'
+}

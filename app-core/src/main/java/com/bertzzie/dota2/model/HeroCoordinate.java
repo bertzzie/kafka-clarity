@@ -3,6 +3,8 @@ package com.bertzzie.dota2.model;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * [Documentation Here]
  *
@@ -10,7 +12,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class HeroCoordinate {
+public class HeroCoordinate implements Serializable {
     private Integer tick;
     private String name;
     private EntityCoordinate coordinate;

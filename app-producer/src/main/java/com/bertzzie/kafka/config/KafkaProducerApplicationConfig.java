@@ -12,6 +12,6 @@ import java.util.Properties;
  */
 @Data
 @ConfigurationProperties
-public class KafkaApplicationConfig {
+public class KafkaProducerApplicationConfig {
     private Properties producer;
 }

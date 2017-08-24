@@ -1,6 +1,8 @@
 package com.bertzzie.kafka.serialization;
 
 import org.apache.kafka.common.serialization.Serializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,6 +15,8 @@ import java.util.Map;
  * @author Alex Xandra Albert Sim
  */
 public class HeroCoordinateSerializer implements Serializer {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Override
     public void configure(Map configs, boolean isKey) { }
 
@@ -24,9 +28,9 @@ public class HeroCoordinateSerializer implements Serializer {
             oos.writeObject(data);
             oos.close();
 
-            byte[] b = baos.toByteArray();
-            return b;
+            return baos.toByteArray();
         } catch (IOException e) {
+            logger.error("Error in serializing data", e);
             return new byte[0];
         }
     }

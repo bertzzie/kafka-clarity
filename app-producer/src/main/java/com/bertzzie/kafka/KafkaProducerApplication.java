@@ -1,6 +1,6 @@
 package com.bertzzie.kafka;
 
-import com.bertzzie.kafka.config.KafkaApplicationConfig;
+import com.bertzzie.kafka.config.KafkaProducerApplicationConfig;
 import com.bertzzie.kafka.producer.HeroMovingKafkaProcessor;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.slf4j.Logger;
@@ -12,7 +12,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 import skadistats.clarity.processor.runner.SimpleRunner;
 import skadistats.clarity.source.MappedFileSource;
 import skadistats.clarity.source.Source;
@@ -27,12 +26,12 @@ import java.io.IOException;
  */
 @SpringBootApplication
 @EnableConfigurationProperties({
-        KafkaApplicationConfig.class
+        KafkaProducerApplicationConfig.class
 })
 public class KafkaProducerApplication implements ApplicationRunner {
 
     @Autowired
-    private KafkaApplicationConfig kafkaApplicationConfig;
+    private KafkaProducerApplicationConfig kafkaProducerApplicationConfig;
 
     @Autowired
     private ApplicationContext context;
@@ -73,7 +72,7 @@ public class KafkaProducerApplication implements ApplicationRunner {
             String gameID = fileName.replace("replay/", "")
                                     .replace(".dem", "");
             HeroMovingKafkaProcessor kafkaProcessor = HeroMovingKafkaProcessor.builder()
-                    .producer(new KafkaProducer<>(kafkaApplicationConfig.getProducer()))
+                    .producer(new KafkaProducer<>(kafkaProducerApplicationConfig.getProducer()))
                     .gameID(gameID)
                     .build();
 

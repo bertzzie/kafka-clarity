@@ -5,6 +5,8 @@ import lombok.Data;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
+import java.io.Serializable;
+
 /**
  * [Documentation Here]
  *
@@ -12,7 +14,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  */
 @Data
 @Builder
-public class EntityCoordinate {
+public class EntityCoordinate implements Serializable {
     public static final EntityCoordinate DUMMY_COORDINATE = EntityCoordinate.builder()
             .X(-999999f)
             .Y(-999999f)
