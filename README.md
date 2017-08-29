@@ -50,6 +50,6 @@ Feel free to send me feedback or PR if you think there's things that need improv
 
 - [x] Demonstrate how to send data to Kafka (via Producer)
 - [x] Demonstrate how to consume data from Kafka
-- [ ] Demonstrate how to use Kafka Streams to process data
+- [x] Demonstrate how to use Kafka Streams to process data
 - [ ] Write blog post about this
 - [ ] Update meetup video link when available
