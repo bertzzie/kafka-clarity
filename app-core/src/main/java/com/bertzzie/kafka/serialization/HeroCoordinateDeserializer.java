@@ -1,5 +1,6 @@
 package com.bertzzie.kafka.serialization;
 
+import com.bertzzie.dota2.model.HeroCoordinate;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,18 +15,18 @@ import java.util.Map;
  *
  * @author Alex Xandra Albert Sim
  */
-public class HeroCoordinateDeserializer implements Deserializer {
+public class HeroCoordinateDeserializer implements Deserializer<HeroCoordinate> {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void configure(Map configs, boolean isKey) { }
 
     @Override
-    public Object deserialize(String topic, byte[] data) {
+    public HeroCoordinate deserialize(String topic, byte[] data) {
         try {
             ByteArrayInputStream bais = new ByteArrayInputStream(data);
             ObjectInputStream ois = new ObjectInputStream(bais);
-            return ois.readObject();
+            return (HeroCoordinate) ois.readObject();
         } catch (IOException exception) {
             logger.error("Error deserializing data", exception);
             return null;

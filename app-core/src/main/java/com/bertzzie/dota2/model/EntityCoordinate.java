@@ -48,4 +48,9 @@ public class EntityCoordinate implements Serializable {
                 .append(Y, rightHandSide.Y)
                 .isEquals();
     }
+
+    @Override
+    public String toString() {
+        return getX().toString() +  "," + getY().toString();
+    }
 }

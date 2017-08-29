@@ -1,5 +1,6 @@
 package com.bertzzie.kafka.serialization;
 
+import com.bertzzie.dota2.model.HeroCoordinate;
 import org.apache.kafka.common.serialization.Serializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,14 +15,14 @@ import java.util.Map;
  *
  * @author Alex Xandra Albert Sim
  */
-public class HeroCoordinateSerializer implements Serializer {
+public class HeroCoordinateSerializer implements Serializer<HeroCoordinate> {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public void configure(Map configs, boolean isKey) { }
 
     @Override
-    public byte[] serialize(String topic, Object data) {
+    public byte[] serialize(String topic, HeroCoordinate data) {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);

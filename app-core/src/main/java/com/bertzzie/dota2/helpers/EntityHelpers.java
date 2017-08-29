@@ -24,7 +24,7 @@ public class EntityHelpers {
 
     private static final Integer CELL_SIZE        = 128;
     private static final Integer DOUBLE_CELL_SIZE = CELL_SIZE * 2;
-    private static final Float   MAP_MAX_WIDTH    = 32768.0f;
+    public static final Float   MAP_MAX_WIDTH    = 32768.0f;
 
     public static EntityCellPosition getEntityCellPosition(Entity entity) {
         FieldPath cellXFP = entity.getDtClass().getFieldPathForName(FIELD_PATH_CELL_X);

@@ -1,5 +1,6 @@
 package com.bertzzie.dota2.model;
 
+import com.bertzzie.dota2.helpers.EntityHelpers;
 import lombok.Builder;
 import lombok.Data;
 
@@ -22,5 +23,18 @@ public class HeroCoordinate implements Serializable {
         return "{ tick:" + tick +
                ", name: " + name +
                ", coordinate: { x: " + coordinate.getX() + ", y: " + coordinate.getY() + " }}" ;
+    }
+
+    public HeroCoordinate getCentralCoordinate() {
+        EntityCoordinate centralCoordinate = EntityCoordinate.builder()
+                .X(coordinate.getX() - EntityHelpers.MAP_MAX_WIDTH)
+                .Y(coordinate.getY() - EntityHelpers.MAP_MAX_WIDTH)
+                .build();
+
+        return new HeroCoordinate(tick, name, centralCoordinate);
+    }
+
+    public String getCentralCoordinateString() {
+        return getCentralCoordinate().getCoordinate().toString();
     }
 }
