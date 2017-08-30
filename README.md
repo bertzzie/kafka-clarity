@@ -42,6 +42,25 @@ To run the producer:
 
 You can change `-Pmatch` to 0, 1, or 2. It will parse the 3 replays above according to index.
 
+To run the stream processor:
+
+```bash
+   $ ./gradlew executeStream
+```
+
+Note that this will shows you nothing at all. If you want to see the result, try running:
+
+```bash
+   $ kafka-console-consumer --bootstrap-server localhost:9092 \
+                            --topic hero_movement_central \
+                            --from-beginning \
+                            --formatter kafka.tools.DefaultMessageFormatter \
+                            --property print.key=true \
+                            --property print.value=true \
+                            --property key.deserializer=org.apache.kafka.common.serialization.StringDeserializer \
+                            --property value.deserializer=org.apache.kafka.common.serialization.LongDeserializer
+```
+
 ## Notes
 
 Feel free to send me feedback or PR if you think there's things that need improvements!
