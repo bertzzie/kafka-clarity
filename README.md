@@ -5,6 +5,9 @@ which then reads all hero positions in game and send it to a Kafka server.
 
 The project is created as a complement for [JVM Meetup #5]() and [this article about Kafka]().
 
+You can also check the slide out at [SpeakderDeck](https://speakerdeck.com/bertzzie/apache-kafka-stream-processing) and 
+watch this talk's video on [Youtube](https://www.youtube.com/watch?v=zikZEOPDXGk).
+
 ## Requirements
 
 Since Github has a file limit, I cannot upload the replay file directly to here. 
@@ -71,4 +74,4 @@ Feel free to send me feedback or PR if you think there's things that need improv
 - [x] Demonstrate how to consume data from Kafka
 - [x] Demonstrate how to use Kafka Streams to process data
 - [ ] Write blog post about this
-- [ ] Update meetup video link when available
+- [x] Update meetup video link when available
